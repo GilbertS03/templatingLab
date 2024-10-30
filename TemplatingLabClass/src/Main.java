@@ -49,10 +49,43 @@ class Recipe<T extends Ingredient>{
 
 public class Main {
     public static void main(String[] args) {
-        int choice = 0;
+
+        SolidIngredient si = new SolidIngredient("flour", 3);
+        LiquidIngredient li = new LiquidIngredient("oil", 2);
+        Recipe<Ingredient> r = new Recipe<>("flour oil", "Add flour and oil together", new ArrayList<>());
+        r.addIngredient(si);
+        r.addIngredient(li);
+
+
+
+        int choice;
         Scanner scan = new Scanner(System.in);
         System.out.println("1. Add Ingredient");
         System.out.println("2. Show Ingredient List");
-        
+        System.out.println("3. Quit");
+        choice = scan.nextInt();
+        while(choice > 3 || choice < 0){
+            System.out.println("Invalid, try again");
+            choice = scan.nextInt();
+        }
+        while(choice != 3){
+            if (choice == 1){
+                r.addIngredient(li);
+            }
+            else{
+                r.print();
+            }
+
+            System.out.println("1. Add Ingredient");
+            System.out.println("2. Show Ingredient List");
+            System.out.println("3. Quit");
+            choice = scan.nextInt();
+            while(choice > 3 || choice < 0){
+                System.out.println("Invalid, try again");
+                choice = scan.nextInt();
+            }
+
+        }
+        System.out.println("goodbye");
     }
 }
