@@ -77,11 +77,11 @@ public class Main {
         double quantity = 0;
 
         System.out.println("Dry or Liquid: (d/l)");
-        dryOrLiquid = scan.nextLine();
+        dryOrLiquid = scan.nextLine().toLowerCase();
         while(dryOrLiquid.length() != 1){
-            System.out.println("Error, must be one character");
+            System.out.println("Error, must enter 'd' or 'l'.");
             System.out.println("Dry or Liquid: (d/l) ");
-            dryOrLiquid = scan.nextLine();
+            dryOrLiquid = scan.nextLine().toLowerCase();
         }
 
         System.out.println("Name of ingredient: ");
@@ -96,7 +96,6 @@ public class Main {
             System.exit(-1);
         }
 
-        dryOrLiquid = dryOrLiquid.toLowerCase();
         Ingredient ingredient;
         if (dryOrLiquid.charAt(0) == 'd') {
             ingredient = new SolidIngredient(name, quantity);
@@ -123,7 +122,7 @@ public class Main {
 
         System.out.println("Instructions: ");
         String instructions = scan.nextLine();
-        
+
         recipe = new Recipe<>(name, instructions);
         int choice = menu(scan);
 
