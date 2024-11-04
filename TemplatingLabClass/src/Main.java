@@ -39,6 +39,10 @@ class Recipe<T extends Ingredient>{
     public void addIngredient(T t){
         _ingredients.add(t);
     }
+
+    public ArrayList<T> getIngredients(){
+        return _ingredients;
+    }
     public void print(){
         System.out.println("Recipe: " + _name);
         System.out.println("Instructions: " + _instructions);
@@ -64,7 +68,7 @@ public class Main {
                 choice = Integer.parseInt(scan.nextLine());
             }
         }
-        catch(InputMismatchException e){
+        catch(InputMismatchException | NumberFormatException e){
             System.out.println("Invalid data entered");
             System.exit(-1);
         }
@@ -109,7 +113,7 @@ public class Main {
             System.out.println("Added Dry ingredient");
         }
         else {
-            System.out.println("Error");
+            System.out.println("Error, 'd' or 'l' was not chosen");
         }
     }
 
